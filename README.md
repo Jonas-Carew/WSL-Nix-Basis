@@ -52,6 +52,8 @@ wsl --install --no-distribution
 To get NixOS itself, we'll download the latest release of NixOS from GitHub. To do this, visit the [NixOS latest release](https://github.com/nix-community/NixOS-WSL/releases/latest) on GitHub and scroll down until you find a list of files. Download `nixos-wsl.tar.gz`, the NixOS tarball.
 From here, we have to create a folder to store your NixOS related files. I'll be naming mine "NixOS" and placing it on my desktop, although you can place it anywhere. We can then move the NixOS tarball we downloaded into our NixOS folder.
 
+***Important: WSL requires virtualization ON in your BIOS. There is a good chance it is on by default, but if you run into an error, this is important to check.***
+
 To install NixOS onto WSL we first move into our NixOS folder:
 
 ```powershell
