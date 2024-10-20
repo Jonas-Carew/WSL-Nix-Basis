@@ -119,19 +119,31 @@ We're now going to use github to clone and fork this repository so that you have
 sudo chown nixos .
 ```
 
-From here, you can fork this repository to have your own copy and record of all of your system versions. To fork this repository, click the down arrow next to the **Fork** button at the top right of the screen. The defaults all work here, so click **Create Fork** to have your own repo. Next, clone your new repository by clicking on clicking on the green **Code** button, copying the url, and running
+From here, you can create a new repository using this one as a base. This is to allow you to have your own copy and record of all of your system versions. To start, create your own repository on GitHub, naming it whatever you like, and don't add any files. Next, clone this repository to your computer by running
 
 ```
-git clone <YOUR URL>
+git clone https://github.com/Jonas-Carew/WSL-Nix-Basis.git
 ```
 
-You now have the entire configuration on your local system, and we just need to move into the directory
+We'll now move into the directory and delete the ties to this repository
 
 ```
 cd WSL-Nix-Basis
+rm -rf .git
 ```
 
-and build the configuration
+And then we'll initialize a new Git repository and tie it back to the one we created on GitHub.
+
+```
+git init
+git add -A
+git commit -m "init"
+git branch -M main
+git remote add origin <YOUR-GITHUB-REPOSITORY-HERE>
+git push -u origin main
+```
+
+If you reload your GitHub, it should now be tracking your repository, so all you need to do now to finish the setup is to build the configuration.
 
 ```
 sudo nixos-rebuild switch --flake .#wsl
