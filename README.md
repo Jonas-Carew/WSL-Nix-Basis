@@ -113,42 +113,26 @@ sudo nixos-rebuild switch
 
 ### NixOS is Declarative!
 
-We're now going to use github to clone and fork this repository so that you have your own NixOS configuration locally which is backed up to github! Before we do this, we first have to be able to use this directory as your user and not ROOT. To do this, we will run
+We're now going to use github to create your own repository using this one as a template, so that you have your own NixOS configuration locally which is backed up to github! Before we do this, we first have to be able to use this directory with git as your user and not ROOT. To do this, we will run
 
 ```
 sudo chown nixos .
 ```
 
-From here, you can create a new repository using this one as a base. This is to allow you to have your own copy and record of all of your system versions. To start, create your own repository on GitHub, naming it whatever you like, and don't add any files. Next, clone this repository to your computer by running
+From here, you can create a new repository using this one as a template. To do this, go to the top right of this repository on GitHub and click the green "**Use this template**" button, then "**Create a new repository**". Name your repository whatever you'd like, and set it to private if you want (might be a good idea but not there's nothing secret here by default). The rest of the defaults work fine, so you can create the repository! 
+
+Finally, clone the repository by clicking the green "**Code**" button at the top right of your repository and copying the URL. Then run the command
 
 ```
-git clone https://github.com/Jonas-Carew/WSL-Nix-Basis.git
+git clone <YOUR URL>
 ```
 
-We'll now move into the directory and delete the ties to this repository
-
-```
-cd WSL-Nix-Basis
-rm -rf .git
-```
-
-And then we'll initialize a new Git repository and tie it back to the one we created on GitHub.
-
-```
-git init
-git add -A
-git commit -m "init"
-git branch -M main
-git remote add origin <YOUR-GITHUB-REPOSITORY-HERE>
-git push -u origin main
-```
-
-If you reload your GitHub, it should now be tracking your repository, so all you need to do now to finish the setup is to build the configuration.
+If you reload your GitHub, it is now be tracking your local files, so all you need to do now to finish the setup is to build the configuration by running
 
 ```
 sudo nixos-rebuild switch --flake .#wsl
 ```
 
-## Read the wiki!
+## Read the wiki (VERY WIP)!
 
 To learn more about how to use all of the different modules, tools, and aliases in this setup, check the [wiki](https://github.com/Jonas-Carew/WSL-Nix-Basis/wiki)!
